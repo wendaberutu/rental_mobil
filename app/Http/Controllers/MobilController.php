@@ -17,13 +17,13 @@ class MobilController extends Controller
         $data = Mobil::orderBy('created_at', 'asc')->get();
 
         // dd($data);
-        return view('datamobil', compact('data'));
+        return view('pointakses/admin/datamobil', compact('data'));
     }
 
 
     public function tambahmobil()
     {
-        return view('tambahdata');
+        return view('pointakses/admin/tambahdata');
     }
 
     public function insertdata(Request $request)
@@ -69,7 +69,7 @@ class MobilController extends Controller
 
         // $data = Mobil::find($id_mobil);
         // dd($data);
-        return view('tampildata', compact('data'));
+        return view('pointakses/admin/tampildata', compact('data'));
     }
     public function updatedata(Request $request, $id_mobil)
     {
@@ -102,14 +102,12 @@ class MobilController extends Controller
         DB::table('mobil')->where('id_mobil', $id_mobil)->delete();
         return redirect()->route('mobil')->with('success', 'Data Berhasil Dihapus!');
     }
-    
+
     function show($id_mobil)
     {
         $data = Mobil::where('id_mobil', $id_mobil)->first();
-        return view('detailmobil', compact('data'));
+        return view('pointakses/admin/detailmobil', compact('data'));
     }
-
-
 }
 
 

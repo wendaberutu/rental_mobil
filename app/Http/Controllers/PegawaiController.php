@@ -17,13 +17,13 @@ class PegawaiController extends Controller
         $data = Pegawai::orderBy('created_at', 'asc')->get();
 
         // dd($data);
-        return view('datapegawai', compact('data'));
+        return view('pointakses/admin/datapegawai', compact('data'));
     }
 
 
     public function tambahpegawai()
     {
-        return view('tambahdatapegawai');
+        return view('pointakses/admin/tambahdatapegawai');
     }
 
     public function insertdata(Request $request)
@@ -68,7 +68,7 @@ class PegawaiController extends Controller
     public function tampilkandata($id_pegawai)
     {
         $data = Pegawai::where('id_pegawai', $id_pegawai)->first();
-        return view('tampildatapegawai', compact('data'));
+        return view('pointakses/admin/tampildatapegawai', compact('data'));
     }
     public function updatedata(Request $request, $id_pegawai)
     {

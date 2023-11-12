@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\UserController;
-use GuzzleHttp\Middleware;
+use App\Http\Middleware\UserAkses;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +32,11 @@ Route::middleware(['guest'])->group(function () {
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::redirect('/home', '/user');
 
     //admin kontroller 
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('UserAkses::admin');
-    // user controller 
-    Route::get('/user', [UserController::class, 'index'])->name('user')->middleware('UserAkses::user');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('UserAkses:admin');
+    Route::get('/user', [UserController::class, 'index'])->name('user')->middleware('UserAkses:user');
 
     // MobilController
     Route::get('/mobil', [MobilController::class, 'index'])->name('mobil');
